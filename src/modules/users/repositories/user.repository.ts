@@ -1,7 +1,6 @@
 import { CreationAttributes } from 'sequelize';
 import { User } from '../../../database/models';
 
-
 /**
  * Finds a user by their email address.
  * @param {string} email - The email of the user to find.
