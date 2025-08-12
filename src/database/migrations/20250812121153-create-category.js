@@ -23,11 +23,11 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'Users', // table name
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT', // Prevent deleting a user that has created categories
+        onDelete: 'RESTRICT',
       },
       modified_at: {
         allowNull: false,
@@ -36,7 +36,7 @@ module.exports = {
       },
       modified_by: {
         type: Sequelize.UUID,
-        allowNull: true, // Can be null initially
+        allowNull: true,
         references: {
           model: 'Users',
           key: 'id',
