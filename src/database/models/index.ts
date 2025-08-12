@@ -1,4 +1,5 @@
 import Category from './category';
+import Product from './product';
 import User from './user';
 
 // user created the category
@@ -31,4 +32,32 @@ Category.belongsTo(User, {
   as: 'deleter',
 });
 
-export { Category, User };
+// product belongs to one Category
+Category.hasMany(Product, { foreignKey: 'categoryId' });
+Product.belongsTo(Category, {
+  foreignKey: 'categoryId',
+  as: 'category', // We'll use this alias to eager-load
+});
+
+// product is created by one User
+User.hasMany(Product, { foreignKey: 'created_by' });
+Product.belongsTo(User, {
+  foreignKey: 'created_by',
+  as: 'creator',
+});
+
+// product is modified by one User
+User.hasMany(Product, { foreignKey: 'modified_by' });
+Product.belongsTo(User, {
+  foreignKey: 'modified_by',
+  as: 'modifier',
+});
+
+// product is deleted by one User
+User.hasMany(Product, { foreignKey: 'deleted_by' });
+Product.belongsTo(User, {
+  foreignKey: 'deleted_by',
+  as: 'deleter',
+});
+
+export { Category, Product, User };
