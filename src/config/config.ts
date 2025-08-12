@@ -20,6 +20,6 @@ export const config = {
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'supersecret',
-    expiresIn: process.env.JWT_EXPIRES_IN || '1d',
+    expiresIn: Number(process.env.JWT_EXPIRES_IN) || 86400,
   },
 };

@@ -1,4 +1,11 @@
-import { config } from './config';
+require('ts-node').register({
+  transpileOnly: true,
+  compilerOptions: {
+    module: 'commonjs',
+  },
+});
+
+const { config } = require('./config.ts');
 
 module.exports = {
   development: {

@@ -12,7 +12,7 @@
     "moduleResolution": "node",
     "baseUrl": "."
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/config/database.cjs"],
   "exclude": ["node_modules"]
 }
 

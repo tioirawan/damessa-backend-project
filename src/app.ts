@@ -6,6 +6,8 @@ import { config } from './config/config';
 import { errorHandler } from './middlewares/errorHandler.middleware';
 import ApiError from './utils/ApiError';
 
+import userRoutes from './modules/users/routes';
+
 const app: Application = express();
 
 app.use(cors());
@@ -18,9 +20,6 @@ if (config.env === 'development') {
   app.use(morgan('dev'));
 }
 
-// --- API Routes ---
-// TODO
-
 // Health check route
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
@@ -28,6 +27,9 @@ app.get('/', (req: Request, res: Response) => {
     message: 'Welcome to the Damessa API!',
   });
 });
+
+// API Routes
+app.use('/api/v1/auth', userRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new ApiError(404, 'Not Found'));
