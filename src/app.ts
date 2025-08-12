@@ -6,6 +6,7 @@ import { config } from './config/config';
 import { errorHandler } from './middlewares/errorHandler.middleware';
 import ApiError from './utils/ApiError';
 
+import categoryRoutes from './modules/categories/routes';
 import userRoutes from './modules/users/routes';
 
 const app: Application = express();
@@ -30,6 +31,7 @@ app.get('/', (req: Request, res: Response) => {
 
 // API Routes
 app.use('/api/v1/auth', userRoutes);
+app.use('/api/v1/categories', categoryRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new ApiError(404, 'Not Found'));
